@@ -74,6 +74,10 @@ class Game extends React.Component {
             xIsNext: (step % 2) === 0,
         });
     }
+    replay() {
+        let that = this
+        this.state.history.map((_, i) => setTimeout(() => that.jumpTo(i), 1000))
+    }
     render() {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
@@ -100,6 +104,7 @@ class Game extends React.Component {
                     <Board squares={current.squares} onClick={(i) => this.handleClick(i)} />
                 </div>
                 <div className="game-info">
+                    <button onClick={() => this.replay()}>=====]Replay[=====</button>
                     <div>{status}</div>
                     <ol>{moves}</ol>
                 </div>
