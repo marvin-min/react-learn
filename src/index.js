@@ -80,19 +80,20 @@ class Game extends React.Component {
     }
     replay() {
         let that = this
-        this.state.history.map((_, i) => setTimeout(() => that.jumpTo(i), 1000))
+        this.state.history.map((_, i) => setTimeout(() => that.jumpTo(i), (i+1)*1000))
     }
     render() {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares)
+        const style = {'fontWeight': 'bold'}
         const moves = history.map((step, move) => {
             const desc = move ?
                 'Go to move #' + move +step.point:
                 'Go to game start';
             return (
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                    <button style={move === this.state.stepNumber ? style : {}} onClick={() => this.jumpTo(move)}>{desc}</button>
                 </li>
             );
         });
