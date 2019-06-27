@@ -95,7 +95,7 @@ class Game extends React.Component {
                     <Board squares={current.squares} onClick={(i) => this.handleClick(i)}  winner={winner}/>
                 </div>
                 <div className="game-info">
-                    <button onClick={() => this.replay()}>=====]Replay[=====</button>
+                    <button onClick={() => this.replay()}>{"===>Replay<==="}</button>
                     <div>{status}</div>
                     <ol>{moves}</ol>
                 </div>
